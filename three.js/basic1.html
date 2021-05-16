@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <!--
+      type="module" 속성을 지정하는 것을 잊지 마세요. 이러면 import 키워드를 통해 Three.js 모듈을 불러올 수 있습니다
+    -->
+    <script type="module">
+      import * as THREE from 'https://threejsfundamentals.org/threejs/resources/threejs/r127/build/three.module.js';
+
+      function main() {
+        const canvas = document.querySelector('#c'); // <canvas id="c"></canvas>와 연결됨
+        const renderer = new THREE.WebGLRenderer({canvas}); // 이 렌더러(renderer)는 여러분이 입력한 데이터를 실제로 canvas에 그려주는 역할을 맡습니다.
+        // 3차원 세상을 canvas에 그려줄 WebGL, WebGLRenderer를 사용
+
+        // 원근 카메라 객체 생성
+        const fov = 75; // field of view(시야각) : 예제의 경우 수직면 75도로 설정
+        const aspect = 2;  // the canvas default / canvas의 가로 세로 비율
+        // near와 far는 카메라 앞에 렌더링되는 공간 범위를 지정하는 요소입니다. 이 공간 바깥에 있는 요소는 화면에서 잘려나가며, 렌더링되지 않을 것입니다.
+        const near = 0.1;
+        const far = 5;
+        const camera = new THREE.PerspectiveCamera(fov, aspect, near, far); // 4가지 속성은 절두체를 만든다. "절두체"는 끝부분이 잘려나간 피라미드처럼 생긴 3차원 모양
+        // 절두체 안에 있는 요소만 렌더링되며, 바깥에 있는 요소는 렌더링되지 않습니다.
+        camera.position.z = 1.5; // 기본 설정으로 카메라는 -Z 축 +Y 축, 즉 아래를 바라봅니다.
+
+        // Scene만들기
+        // 뭔가를 화면에 렌더링하고 싶다면 먼저 Scene에 추가해야 함
+        const scene = new THREE.Scene();
+
+        // 간단한 정육면체 만들기
+        const boxWidth = 1;
+        const boxHeight = 1;
+        const boxDepth = 1;
+        // 지금은 정육면체를 만들어야 하니 BoxGeometry 생성자를 호출
+        const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+
+        //  Material을 만들고 색을 지정
+        // 숫자 형태의 hex 코드를 이용(색을 지정할 때는)
+        const material = new THREE.MeshBasicMaterial({color: 0x44aa88});  // greenish blue
+
+        // Geometry(물체의 형태)와 Material(물체의 색, 밝기, 질감 등)을 이용해 Mesh를 만듭니다.
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube); // 완성된 정육면체 Mesh를 Scene에 넣는다.
+
+        renderer.render(scene, camera); // renderer의 render 메서드에 Scene과 Camera를 넘겨주면 화면을 렌더링할 수 있다.
+      }
+
+      // 코드 상으로 Three.js는 분명 3D 정육면체를 그렸지만, 카메라가 -Z 방향을 바라보고, 정육면체도 Z 축에 맞추어 정렬되어 있기 때문에 한 면만 보입니다.
+      main();
+    </script>
+  </head>
+  <body>
+    <canvas id="c"></canvas> <!-- Three.js에게 렌더링을 맡겨보죠. -->
+  </body>
+</html>
