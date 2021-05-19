@@ -13,7 +13,7 @@ document.body.appendChild(renderer.domElement);
 var controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.update();*/
 
-var abint = new THREE.AmbientLight(0x55000, 4)
+var abint = new THREE.AmbientLight( 0x404040)
 scene.add(abint)
 var loader = new THREE.GLTFLoader();
 loader.load( './desk.gltf', function ( gltf ) {
