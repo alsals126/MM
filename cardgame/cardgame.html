@@ -5,34 +5,66 @@
         <title>짝 맞추기</title>
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+            *{margin: 0;}
             body{
                 background-image: url('../img/cardgameBG.png');
                 background-size: 1930px 950px;
             }
             .setting{
-                position: relative;
-                left: 1720px;
-                top: 10px;
-                width: 180px;
+                position: absolute;
+                left: 1750px;
+                top: 25px;
+                width: 170px;
             }
             .setting img{
                 cursor: pointer;
                 width: 50px;
-                margin-right: 30px;
+                margin-right: 25px;
             }
-            .MM{
-                position: relative;
-                top: 360px;
-                height: 515px;
-                overflow: hidden;
-            }
-            .MM img{
+
+            #ViewTimer{
                 position: absolute;
-                width: 150px;
+                left: 30px;
+                font-family: 'Jua', sans-serif;
+                font-size: 50px;
             }
+
+            .MM1 {
+                overflow: hidden;
+                position: absolute;
+                top: 787px; 
+                left: 625px;   
+                height: 150px;
+                
+            }
+            .MM1img{ 
+                position: relative;
+                top: 20px;
+                width: 140px; 
+                animation-name: anim1;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;                
+            }
+            .MM2 {
+                overflow: hidden;
+                position: absolute;
+                top: 545px; 
+                left: 1690px;   
+                height: 170px;
+            }
+            .MM2img{ 
+                position: relative;
+                top: 20px;
+                width: 170px; 
+                animation-name: anim2;
+                animation-duration: 3s;
+                animation-iteration-count: infinite;                
+            }
+
             #wrapper{
                 position: absolute;
-                left: 230px;
+                left: 240px;
                 top: 120px;
                 width: 1440px;
             }
@@ -59,7 +91,7 @@
             }
 
             .card-front{
-                background-image: url('../그외/1x/Artboard\ 1.png');
+                background-image: url('../그외/1x/cardFRONT.png');
             }
 
             .card-front, .card-back{
@@ -70,27 +102,51 @@
             }
 
             .card-back{
-                background: rgb(255, 255, 255);
+                background-image: url('../그외/1x/Artboard\ 1.png');
                 transform: rotateY(180deg);
                 font-family: 'Nanum Gothic';
                 font-size: 90px;
                 color: rgba(0, 0, 0, 0.8);
                 line-height: 190px;
             }
+
+            @keyframes anim1{
+                0%, 100% {top: 220px;}
+                30% {top: 50px} 
+            }
+            @keyframes anim2{
+                0%, 100% {top: 220px;}
+                30% {top: 0px}  
+            }
         </style>
+        <script>
+            var SetTime = 0;		// 최초 설정 시간(기본 : 초)
+
+            function countTIME() {
+                m = 
+                    (Math.floor(SetTime / 60)<10 ? '0'+Math.floor(SetTime / 60) : Math.floor(SetTime / 60)) 
+                    + " : " 
+                    + ((SetTime % 60)<10 ? '0'+(SetTime % 60) : (SetTime % 60));
+                document.all.ViewTimer.innerHTML = m;		// div 영역에 보여줌 
+                SetTime++;					// 1초씩 증가    
+            }
+
+            window.onload = function TimeStart(){ tid=setInterval('countTIME()',1000) };
+        </script>
     </head>
     <body>
-        <!-- https://www.urbanbrush.net/web/wp-content/uploads/edd/2018/10/urbanbrush-20181011092710119347.png    카드 뒷면 참고
-            https://png.pngtree.com/element_our/20190603/ourmid/pngtree-yellow-wheat-ears-of-wheat-image_1456413.jpg
-        -->
         <div class="setting">
             <img src="../img/question-sign.png">
             <img src="../img/homeFull.png">
         </div>
-        <div class="MM">
-            <img src="../img/cardgameMM.png" style="top: 400px; left: 600px;">
-            <img src="../img/cardgameMM.png" style="top: 130px; left: 1685px;">
+        <div id="ViewTimer"></div>
+        <div class="MM1">
+            <img src="../img/cardgameMM.png" class="MM1img">
+        </div>-
+        <div class="MM2">
+            <img src="../img/cardgameMM.png" class="MM2img">
         </div>
+        
         <div id="wrapper"></div>
         <script>
             const $wrapper = document.querySelector('#wrapper');
