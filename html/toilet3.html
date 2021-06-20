@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>🐭MM🐭</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+            body{
+                background-image: url('../img/화장실거울.png');
+                background-size: 1930px 950px;
+            }
+
+            .arrow img{
+                cursor: pointer;
+                position: absolute; 
+                top: 430px; 
+                width: 100px;
+            }
+
+            .mission{
+                cursor: pointer;
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                width: 70px;
+                animation-name: highlights;  
+                animation-duration: 2s;
+                animation-iteration-count: infinite; 
+            }
+
+            .modal {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: none;
+                z-index: 100;
+                background-color: rgba(0, 0, 0, 0.4);
+            }
+            .modalBox {
+                position: relative;
+                left: 535px;
+                top: 130px;
+                width: 850px; 
+                height: 595px;
+                border-radius: 30px;
+                background-image: url('../img/화장실howto.png');
+                background-size: 100% 100%;
+                font-family: 'Jua', sans-serif;
+                font-size: 50px;
+            }
+            .modalBox div{
+                position: absolute;
+                top: 100px;
+                left: 160px;
+            }
+            .modalBox .s1{
+                font-size: 90px;
+                color: rgb(16, 38, 56);
+            }
+
+            @keyframes highlights{
+                30%, 50%, 80% {width: 71px;}
+            }
+        </style>
+
+        <script type="text/javascript" src="../js/onloadToilet.js"></script> 
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+        <script>
+            $(function(){
+                // ? 클릭시 모달
+                $(".mission").click(function(){
+                    $(".modal").show();
+                });
+
+                //.modal밖에 클릭시 닫힘
+                $(".modal").click(function (e) {
+                    if (e.target.className != "modal") {
+                        return false;
+                    } else {
+                        $(".modal").hide();
+                    }
+                });
+            });
+        </script>
+    </head> 
+    <body>
+        <div class="arrow">
+            <img src="../img/right-arrow.png" style="right: 50px;">
+            <img src="../img/right-arrow.png" style="left: 50px; transform: rotate(180deg);" onclick="location.href='toilet2.html'">
+        </div> 
+        
+        <img src="../img/memo.png" class="mission">
+
+        <!-- 미션 모달 -->
+        <div class="modal">
+            <div class="modalBox">
+                <div>
+                    <span class="s1">손소독제</span>를 찾고
+                    <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span class="s2"><span style="color: rgb(239, 242, 255)">화장실</span>을 탈출해줘🐭</span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

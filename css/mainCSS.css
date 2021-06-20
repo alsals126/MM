@@ -46,6 +46,7 @@ body{
     background: rgb(255, 224, 111);
 }
 #pos3{
+    cursor: pointer;
     position: absolute;
     top: 640px;
     left: 1180px;
