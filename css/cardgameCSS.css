@@ -3,7 +3,7 @@
 
 *{margin: 0;}
 body{
-    background-image: url('../img/cardgameBG.png');
+    background-image: url('../img/CardGame/cardgameBG.png');
     background-size: 1930px 950px;
 }
 
@@ -79,7 +79,7 @@ body{
     transform-style: preserve-3d;
 }
 .card.flipped .card-inner{ transform: rotateY(180deg); }
-.card-front{ background-image: url('../img/cardFRONT.png'); }
+.card-front{ background-image: url('../img/CardGame/cardFRONT.png'); }
 .card-front, .card-back{
     position: absolute;
     width: 100%;
@@ -87,7 +87,7 @@ body{
     backface-visibility: hidden;
 }
 .card-back{
-    background-image: url('../img/cardBACK.png');
+    background-image: url('../img/CardGame/cardBACK.png');
     transform: rotateY(180deg);
     font-family: 'Noto Serif KR', serif;    
     font-size: 90px;
@@ -125,7 +125,7 @@ body{
     width: 700px; 
     height: 800px;
     border-radius: 30px;
-    background-image: url('../img/howtoBG.png');
+    background-image: url('../img/CardGame/howtoBG.png');
     background-size: 100% 100%;
 
     text-align: center;
@@ -150,7 +150,7 @@ body{
     left: 585px;
     width: 750px;
     height: 530px;
-    background-image: url('../img/lastBG.png');
+    background-image: url('../img/CardGame/lastBG.png');
     background-size: 100% 100%;
     font-family: 'Jua', sans-serif;
 }
