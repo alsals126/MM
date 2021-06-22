@@ -11,6 +11,10 @@ $(function(){
     $(".mission").click(function(){
         $(".modal").show();
     });
+    $(".lock").click(function(){
+        $(".key").show();
+        $('.n1').focus();
+    });
 
     //.modal밖에 클릭시 닫힘
     $(".modal").click(function (e) {
@@ -18,6 +22,14 @@ $(function(){
             return false;
         } else {
             $(".modal").hide();
+        }
+    });
+    //.key밖에 클릭시 닫힘
+    $(".key").click(function (e) {
+        if (e.target.className != "key") {
+            return false;
+        } else {
+            $(".key").hide();
         }
     });
 });

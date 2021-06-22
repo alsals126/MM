@@ -5,10 +5,88 @@
         <title>🐭MM🐭</title>
         <style>
             body{ background-image: url('../img/toilet/화장실청소도구함.png'); }
+            .lock{
+                cursor: pointer;
+                position: absolute;
+                left: 568px;
+                top: 461px;
+                width: 53px;
+                height: 48px;
+            }
+            .keyBox{
+                position: relative;
+                left: 535px;
+                top: 130px;
+                width: 850px; 
+                height: 395px;
+                border: 2px solid beige;
+            }
+            .keyBox img{
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                width: 100%;
+            }
+            .inputSEC{
+                position: absolute;
+                top: 120px;
+            }
+            .keyBox input{
+                width: 200px;
+                font-family: 'Jua', sans-serif;
+                font-size: 210px;
+                background-color: rgba(0, 0, 0, 0);   
+                outline: none;
+                border: none;
+                text-align: center;
+            }
         </style>
         <link rel="stylesheet" href="../css/toiletInCommon.css">
 
-        <script type="text/javascript" src="../js/toiletInCommon.js"></script> 
+        <script type="text/javascript" src="../js/toiletInCommon.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+            function limit(e,n){
+                e.value = e.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+
+                if(e.value.length > 1){
+                    var val = e.value;
+                    e.value = e.value.slice(0, 1);
+                    n=n+1;
+                    if(n<5){
+                        document.querySelector('.n'+n).focus();
+                        document.querySelector('.n'+n).value = val.slice(1);
+                    }else
+                        end()
+                }
+                
+                if(e.value.length == 1 && n==4){ 
+                    setTimeout(()=>{end()},500)
+                }
+            }
+            function end(){
+                var v1 = document.querySelector('.n1').value
+                var v2 = document.querySelector('.n2').value
+                var v3 = document.querySelector('.n3').value
+                var v4 = document.querySelector('.n4').value
+                var result = v1+v2+v3+v4;
+                
+                if(result == 5663){
+                    alert('손소독제를 얻었습니다!')
+                    $('.key').hide();
+                }
+                else{
+                    alert('틀렸습니다.')
+
+                    $(".n1").val('');
+                    $(".n2").val('');
+                    $(".n3").val('');
+                    $(".n4").val('');
+                    $('.n1').focus();
+                }
+            }
+        </script>
     </head> 
     <body>
         <div class="arrow">
@@ -16,8 +94,21 @@
             <img src="../img/right-arrow.png" style="left: 50px; transform: rotate(180deg);" onclick="location.href='toilet1.html'">
         </div> 
         
-        <img src="../img/memo.png" class="mission">
+        <div class="lock"></div>
+        <!-- 청소도구함 모달 -->
+        <div class="key">
+            <div class="keyBox">
+                <img src="../그외/4x/keypad.png">
+                <div class="inputSEC">
+                    <input type="text" oninput="limit(this,1)" class="n1">
+                    <input type="text" oninput="limit(this,2)" class="n2">
+                    <input type="text" oninput="limit(this,3)" class="n3">
+                    <input type="text" oninput="limit(this,4)" class="n4">
+                </div>
+            </div>
+        </div>
 
+        <img src="../img/memo.png" class="mission">
         <!-- 미션 모달 -->
         <div class="modal">
             <div class="modalBox">
