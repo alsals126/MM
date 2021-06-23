@@ -13,7 +13,7 @@ $(function(){
     });
     $(".lock").click(function(){
         $(".key").show();
-        $('.n1').focus();
+        $('.keypad').focus();
     });
 
     //.modal밖에 클릭시 닫힘
