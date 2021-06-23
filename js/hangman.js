@@ -115,3 +115,10 @@ $(function(){
         }
     });
 });
+
+function home(){
+    if(confirm('게임이 저장되지 않고 화장실로 돌아갑니다.\n그래도 계속하시겠습니까?') == true)
+        location.replace('toilet1.html')
+    else
+        return;
+}
