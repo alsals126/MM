@@ -62,6 +62,7 @@
             function end(val){
                 if(val == 5663){
                     alert('손소독제를 얻었습니다!')
+                    localStorage.setItem("toiletKeypad", 'success')
                     $('.key').hide();
                 }
                 else{
