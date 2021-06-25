@@ -39,7 +39,7 @@ body{
 }
 
 .hint {
-    cursor: pointer;
+    cursor: zoom-in;
     position: fixed;
     top: 350px;
     left: 830px;
@@ -102,14 +102,6 @@ body{
     right: -75px;
     width: 65px;
 }
-
-
-
-
-
-
-
-
 
 .hintmodalBox {
     position: relative;
